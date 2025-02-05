@@ -1,7 +1,7 @@
 # Sir Points-a-Lot 🏰👑
 
 A receipt points processor for Fetch, as per your takehome quest. <br />
-Jesse Kercheval, [GitHub](https://github.com/jessekerch/), at your service
+Developed by: Jesse Kercheval, [LinkedIn](https://www.linkedin.com/in/jessekercheval/)
 
 ## Built With 🛠️
 
@@ -29,4 +29,5 @@ docker run -p 3000:3000 sir-points-a-lot
    - Use `GET /receipts/:id/points` to retrieve the points earned for a given receipt ID.
 
 ## Sally Forth! ⚔️
+
 # api-webservice-receipt-processor
