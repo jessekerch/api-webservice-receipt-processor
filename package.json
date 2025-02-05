@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node dist/app.js",
     "dev": "nodemon",
-    "build": "tsc",
+    "build": "tsc && mkdir -p dist/views && cp -r src/views/home.html dist/views/",
     "lint": "eslint src/*.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

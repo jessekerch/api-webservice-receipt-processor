@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sir Points-a-Lot 🏰</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-100 text-gray-900 font-sans p-8">
+    <div class="max-w-3xl mx-auto bg-white p-6 rounded-lg shadow-md">
+      <h1 class="text-3xl font-bold text-center mb-6">
+        🐶 Fetch ye receipts and <br />
+        let Sir Points-a-Lot grant thee points! ⚔️
+      </h1>
+
+      <h2 class="text-xl font-semibold mb-2">How to Use:</h2>
+      <ol class="list-decimal list-inside space-y-2">
+        <li>
+          <strong>Submit a Receipt</strong>
+          <ul class="list-disc list-inside ml-4 text-gray-700">
+            <li>
+              Send a
+              <code class="bg-gray-200 px-2 py-1 rounded">POST</code> request to
+              <code class="bg-gray-200 px-2 py-1 rounded"
+                >/receipts/process</code
+              >
+              with a receipt in JSON format.
+            </li>
+            <li>
+              You'll receive a <strong>unique receipt ID</strong> in response.
+            </li>
+          </ul>
+        </li>
+        <li>
+          <strong>Check Receipt Points</strong>
+          <ul class="list-disc list-inside ml-4 text-gray-700">
+            <li>
+              Use
+              <code class="bg-gray-200 px-2 py-1 rounded"
+                >GET /receipts/:id/points</code
+              >
+              to retrieve the points earned for a given receipt ID.
+            </li>
+          </ul>
+        </li>
+      </ol>
+
+      <h2 class="text-xl font-semibold mt-6">📜 Example Receipt</h2>
+      <div class="relative bg-gray-900 text-white p-4 rounded-lg overflow-auto">
+        <pre id="receipt-json" class="whitespace-pre-wrap">
+{
+  "retailer": "Target",
+  "purchaseDate": "2022-01-01",
+  "purchaseTime": "13:01",
+  "items": [
+    {
+      "shortDescription": "Mountain Dew 12PK",
+      "price": "6.49"
+    },{
+      "shortDescription": "Emils Cheese Pizza",
+      "price": "12.25"
+    },{
+      "shortDescription": "Knorr Creamy Chicken",
+      "price": "1.26"
+    },{
+      "shortDescription": "Doritos Nacho Cheese",
+      "price": "3.35"
+    },{
+      "shortDescription": "   Klarbrunn 12-PK 12 FL OZ  ",
+      "price": "12.00"
+    }
+  ],
+  "total": "35.35"
+}
+            </pre
+        >
+        <button
+          onclick="copyToClipboard()"
+          class="absolute top-2 right-2 bg-blue-500 text-white px-3 py-1 rounded text-sm hover:bg-blue-600"
+        >
+          Copy 📋
+        </button>
+      </div>
+
+      <h2 class="text-xl font-semibold mt-6">🏆 Example Points Tally</h2>
+      <div class="bg-gray-100 p-4 rounded-lg overflow-auto max-w-full w-full">
+        <pre class="whitespace-pre-wrap text-sm">
+Total Points: 28
+Breakdown:
+     6 points - retailer name has 6 characters
+    10 points - 5 items (2 pairs @ 5 points each)
+     3 points - "Emils Cheese Pizza" is 18 characters (a multiple of 3)
+                item price of 12.25 * 0.2 = 2.45, rounded up is 3 points
+     3 points - "Klarbrunn 12-PK 12 FL OZ" is 24 characters (a multiple of 3)
+                item price of 12.00 * 0.2 = 2.4, rounded up is 3 points
+     6 points - purchase day is odd
+  + ---------
+  = 28 points
+        </pre>
+      </div>
+    </div>
+
+    <script>
+      function copyToClipboard() {
+        const text = document.getElementById("receipt-json").innerText.trim();
+        navigator.clipboard
+          .writeText(text)
+          .then(() => {
+            alert("Receipt JSON copied to clipboard!");
+          })
+          .catch((err) => {
+            console.error("Error copying text: ", err);
+          });
+      }
+    </script>
+  </body>
+</html>
