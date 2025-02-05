@@ -2,6 +2,7 @@
 
 import express from "express";
 import receiptsRouter from "./routes/receipts";
+import path from "path";
 
 const app = express();
 const port = 3000;
@@ -10,7 +11,7 @@ app.use(express.json());
 app.use("/receipts", receiptsRouter);
 
 app.get("/", (req, res) => {
-  res.send("GET request received");
+  res.sendFile(path.join(__dirname, "views", "home.html"));
 });
 
 app.listen(port, () => {
