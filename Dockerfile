@@ -8,6 +8,9 @@ RUN npm install
 
 COPY . .
 
+# Copying home.html to dist before building
+RUN mkdir -p dist/views && cp -r src/views/home.html dist/views/
+
 RUN npm run build
 
 # Exposing the port the app runs on
