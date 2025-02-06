@@ -15,7 +15,7 @@ Developed by: Jesse Kercheval, [LinkedIn](https://www.linkedin.com/in/jessekerch
 
 ```sh
 docker build -t sir-points-a-lot .
-docker run -p 3000:3000 sir-points-a-lot
+docker run -p 3030:3030 sir-points-a-lot
 ```
 
 ## How It Works
