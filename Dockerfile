@@ -14,7 +14,7 @@ RUN mkdir -p dist/views && cp -r src/views/home.html dist/views/
 RUN npm run build
 
 # Exposing the port the app runs on
-EXPOSE 3000
+EXPOSE 3030
 
 # Starting the app
 CMD ["node", "dist/app.js"]
